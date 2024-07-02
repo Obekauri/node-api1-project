@@ -1,3 +1,15 @@
-// BUILD YOUR SERVER HERE
+const express = require('express')
 
-module.exports = {}; // EXPORT YOUR SERVER instead of {}
+const server = express()
+
+server.get('/api/users', (seq, res) => {
+    res.json('Users here')
+})
+
+server.use('*', (req, res) => {
+    res.status(404).json({
+        message: 'Not found'
+    })
+})
+
+module.exports = server;
